@@ -34,7 +34,7 @@ Uma empresa precisa ter um melhor controle dos documentos recebidos vindos de ou
 | institution_id | ID da instituição de recebimento |
 | state | Estado do documento (recebido/não recebido) |
 
-**StateDocument**
+**StateTransitionDocument**
 
 | Coluna | Descrição |
 | --- | --- |
