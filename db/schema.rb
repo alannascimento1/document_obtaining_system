@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_13_171700) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_16_235526) do
+  create_table "document_types", force: :cascade do |t|
+    t.text "name"
+    t.text "information"
+    t.integer "user_id", null: false
+    t.integer "institution_id", null: false
+    t.text "state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["institution_id"], name: "index_document_types_on_institution_id"
+    t.index ["user_id"], name: "index_document_types_on_user_id"
+  end
+
+  create_table "institutions", force: :cascade do |t|
+    t.text "name", null: false
+    t.integer "sector_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sector_id"], name: "index_institutions_on_sector_id"
+  end
+
+  create_table "sectors", force: :cascade do |t|
+    t.text "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -23,4 +49,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_13_171700) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "document_types", "institutions"
+  add_foreign_key "document_types", "users"
+  add_foreign_key "institutions", "sectors"
 end
