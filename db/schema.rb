@@ -13,14 +13,8 @@
 ActiveRecord::Schema[7.1].define(version: 2024_01_16_235526) do
   create_table "document_types", force: :cascade do |t|
     t.text "name"
-    t.text "information"
-    t.integer "user_id", null: false
-    t.integer "institution_id", null: false
-    t.text "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["institution_id"], name: "index_document_types_on_institution_id"
-    t.index ["user_id"], name: "index_document_types_on_user_id"
   end
 
   create_table "institutions", force: :cascade do |t|
@@ -49,7 +43,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_235526) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "document_types", "institutions"
-  add_foreign_key "document_types", "users"
   add_foreign_key "institutions", "sectors"
 end
