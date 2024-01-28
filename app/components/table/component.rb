@@ -1,5 +1,7 @@
 class Table::Component < ViewComponent::Base
-  def initialize(sectors:)
-    @sectors = sectors
+  include Turbo::FramesHelper
+
+  def initialize(rows_object:)
+    @rows_object = rows_object
   end
 end
