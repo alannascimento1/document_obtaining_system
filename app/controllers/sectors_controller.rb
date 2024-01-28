@@ -5,14 +5,13 @@ class SectorsController < ActionController::Base
     @sectors = Sector.all
   end
 
-  def new
+  def edit
+    @sector = Sector.find(params[:id])
     @sectors = Sector.all
   end
 
-  def edit
-    respond_to do |format|
-      format.turbo_stream
-    end
+  def new
+    @sectors = Sector.all
   end
 
   def create
@@ -28,6 +27,29 @@ class SectorsController < ActionController::Base
       flash[:notice] = "Setor não pode ser criado!"
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def update
+    @sector = Sector.find(params[:id])
+    @sectors = Sector.all
+
+    if @sector.update(sector_params)
+      @sectors = Sector.all
+
+      flash[:notice] = "Setor atualizado com sucesso!"
+      render :edit, status: :ok
+    else
+      flash[:notice] = "Setor não pode ser atualizado!"
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @sector = Sector.find(params[:id])
+    @sectors = Sector.all
+    @sector.destroy
+
+    render :destroy, status: :ok
   end
 
   private
