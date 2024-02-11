@@ -35,9 +35,6 @@
 
             <form class="p-4 md:p-5" action=<%= document_records_path %> method="post" data-turbo="true" data-turbo-frame="form_document_record_content_frame">
               <%= turbo_frame_tag :form_document_record_content_frame do %>
-                <div data-controller="load-flowbite">
-                  <%= render Alert::Component.new(title: flash.now[:notice]) %> 
-                </div>
                 <div class="grid gap-4 mb-4 grid-cols-2">
                   <div class="col-span-2 mb-2">
                     <label for="institutions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecione o setor</label>
@@ -120,7 +117,12 @@
                   </div>
                 </form>
               </td>
-              <td class="px-6 py-4"> <a href="#" class="text-blue-500 hover:text-blue-700"> Excluir </a> </td>
+              <td class="px-6 py-4">
+                <form action="<%= document_record_path(document_record.id) %>" method="post" data-turbo="true" data-remote="true">
+                  <input type="hidden" name="_method" value="delete">
+                  <button type="submit" class="text-blue-500 hover:text-blue-700">Excluir</button>
+                </form>
+              </td>
             </tr>
           <% end %>
         <% end %>

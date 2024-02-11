@@ -38,6 +38,8 @@ class DocumentRecordsController < ApplicationController
   def update
     @document_record = DocumentRecord.find(params[:id])
     @document_records = DocumentRecord.all
+    @document_types = DocumentType.all
+    @institutions = Institution.all
 
     if @document_record.update(document_record_params)
       @document_records = DocumentRecord.all
