@@ -1,7 +1,8 @@
 class Table::Component < ViewComponent::Base
   include Turbo::FramesHelper
+  renders_one :header
+  renders_one :set_rows
 
-  def initialize(rows_object:)
-    @rows_object = rows_object
+  def initialize()
   end
 end

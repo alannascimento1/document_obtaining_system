@@ -25,20 +25,22 @@
 <% end %>
 
 <%= turbo_stream.update :institutions_list_frame do %>
-  <%= render Table::Component.new(rows_object: @institutions) do %>
-    <% @institutions&.each do |institution|%>
-      <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
-        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> <%= institution.name %> </th>
-        <td class="px-6 py-4">
-          <form action="<%= edit_institution_path(institution.id) %>" method="post" data-turbo="true" data-turbo-frame="form_edit_institution_content_frame" data-remote="true">
-            <div data-action="click->open-modal-by-click#show">
-              <input type="hidden" name="_method" value="get">
-              <button type="submit" class="text-blue-500 hover:text-blue-700">Editar</button>
-            </div>
-          </form>
-        </td>
-        <td class="px-6 py-4"> <a href="#" class="text-blue-500 hover:text-blue-700"> Excluir </a> </td>
-      </tr>
+  <%= render Table::Component.new() do |c| %>
+    <% c.with_set_rows do %>
+      <% @institutions&.each do |institution|%>
+        <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> <%= institution.name %> </th>
+          <td class="px-6 py-4">
+            <form action="<%= edit_institution_path(institution.id) %>" method="post" data-turbo="true" data-turbo-frame="form_edit_institution_content_frame" data-remote="true">
+              <div data-action="click->open-modal-by-click#show">
+                <input type="hidden" name="_method" value="get">
+                <button type="submit" class="text-blue-500 hover:text-blue-700">Editar</button>
+              </div>
+            </form>
+          </td>
+          <td class="px-6 py-4"> <a href="#" class="text-blue-500 hover:text-blue-700"> Excluir </a> </td>
+        </tr>
+      <% end %>
     <% end %>
   <% end %>
 <% end %>

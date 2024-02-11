@@ -10,7 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_16_235526) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_28_204311) do
+  create_table "document_records", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "institution_id", null: false
+    t.boolean "state", default: true
+    t.text "information"
+    t.integer "document_type_id", null: false
+    t.text "received_from"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_type_id"], name: "index_document_records_on_document_type_id"
+    t.index ["institution_id"], name: "index_document_records_on_institution_id"
+    t.index ["user_id"], name: "index_document_records_on_user_id"
+  end
+
   create_table "document_types", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -43,5 +57,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_16_235526) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "document_records", "document_types"
+  add_foreign_key "document_records", "institutions"
+  add_foreign_key "document_records", "users"
   add_foreign_key "institutions", "sectors"
 end
