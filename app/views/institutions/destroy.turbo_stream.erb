@@ -18,3 +18,9 @@
     <% end %>
   <% end %>
 <% end %>
+
+<%= turbo_stream.update :alert_index_frame do %>
+  <div data-controller="load-flowbite">
+    <%= render Alert::Component.new(title: flash.now[:notice]) %> 
+  </div>
+<% end %>

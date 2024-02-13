@@ -20,6 +20,8 @@
 </nav>
 
 <section class="flex flex-col space-y-4 mt-10">
+  <%= turbo_frame_tag :alert_index_frame do %>
+  <% end %>
   <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:justify-between">
     <form class="flex flex-row">
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>

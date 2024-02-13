@@ -54,7 +54,11 @@ class InstitutionsController < ActionController::Base
     @institutions = Institution.all
     @institution.destroy
 
+    flash[:notice] = "Instituição deletada com sucesso!"
     render :destroy, status: :ok
+  rescue ActiveRecord::InvalidForeignKey => e
+    flash[:notice] = "Esta instituição não pode ser deletada porque está sendo referenciada por outros registros."
+    render :destroy, status: :unprocessable_entity
   end
 
   private

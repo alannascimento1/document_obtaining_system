@@ -48,8 +48,11 @@ class DocumentTypesController < ActionController::Base
     @document_type = DocumentType.find(params[:id])
     @document_types = DocumentType.all
     @document_type.destroy
-
+    flash[:notice] = "Tipo de documento deletado com sucesso!"
     render :destroy, status: :ok
+  rescue ActiveRecord::InvalidForeignKey => e
+    flash[:notice] = "Este tipo de documento não pode ser deletado porque está sendo referenciada por outros registros."
+    render :destroy, status: :unprocessable_entity
   end
 
   private

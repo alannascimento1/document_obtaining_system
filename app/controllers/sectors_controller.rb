@@ -48,9 +48,13 @@ class SectorsController < ActionController::Base
     @sector = Sector.find(params[:id])
     @sectors = Sector.all
     @sector.destroy
-
+    flash[:notice] = "Setor deletado com sucesso!"
     render :destroy, status: :ok
+  rescue ActiveRecord::InvalidForeignKey => e
+    flash[:notice] = "Este setor não pode ser deletado porque está sendo referenciada por outros registros."
+    render :destroy, status: :unprocessable_entity
   end
+
 
   private
   def sector_params
