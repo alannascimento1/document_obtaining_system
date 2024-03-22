@@ -2,29 +2,19 @@ class InstitutionsController < ActionController::Base
   layout 'base'
 
   def index
-    @institutions = Institution.all
-    @sectors = Sector.all
   end
 
   def edit
     @institution = Institution.find(params[:id])
-    @institutions = Institution.all
-    @sectors = Sector.all
   end
 
   def new
-    @institutions = Institution.all
-    @sectors = Sector.all
   end
 
   def create
     @institution = Institution.new(institution_params)
-    @institutions = Institution.all
-    @sectors = Sector.all
 
     if @institution.save
-      @institutions = Institution.all
-
       flash[:notice] = "Instituição criada com sucesso!"
       render :new, status: :ok
     else
@@ -35,12 +25,8 @@ class InstitutionsController < ActionController::Base
 
   def update
     @institution = Institution.find(params[:id])
-    @institutions = Institution.all
-    @sectors = Sector.all
 
     if @institution.update(institution_params)
-      @institutions = Institution.all
-
       flash[:notice] = "Instituição atualizada com sucesso!"
       render :edit, status: :ok
     else
@@ -51,7 +37,6 @@ class InstitutionsController < ActionController::Base
 
   def destroy
     @institution = Institution.find(params[:id])
-    @institutions = Institution.all
     @institution.destroy
 
     flash[:notice] = "Instituição deletada com sucesso!"

@@ -8,7 +8,7 @@
       <label for="institutions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecione o setor</label>
       <select id="institutions" name="document_record[document_type_id]"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option selected>Escolha o Tipo de Documento</option>
-        <% @document_types.each do |document_type| %>
+        <% DocumentType.all.each do |document_type| %>
           <option value="<%= document_type.id %>"><%= document_type.name %></option>
         <% end %>
       </select>
@@ -19,7 +19,7 @@
       <label for="institutions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Selecione o setor</label>
       <select id="institutions" name="document_record[institution_id]"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
         <option selected>Escolha uma Instituição</option>
-        <% @institutions.each do |institution| %>
+        <% Institution.all.each do |institution| %>
           <option value="<%= institution.id %>"><%= institution.name %></option>
         <% end %>
       </select>
@@ -55,7 +55,7 @@
       <th scope="col" class="px-6 py-3"> Excluir </th>
     <% end %>
     <% c.with_set_rows do %>
-      <% @document_records&.each do |document_record|%>
+      <% DocumentRecord.all&.each do |document_record|%>
         <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
           <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> <%= document_record.document_type.name %> </th>
           <td class="px-6 py-4">
