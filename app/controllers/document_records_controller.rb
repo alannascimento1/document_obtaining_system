@@ -2,10 +2,16 @@ class DocumentRecordsController < ApplicationController
   layout 'base'
 
   def index
-    @document_records = DocumentRecord.all
+    @institution = Institution.find_by(id: params[:institution_id])
+    @document_records = @institution.document_records
   end
 
-  def new; end
+  def new
+    puts "---------------"
+    puts params[:institution_id]
+    puts "---------------"
+    @institution_id = params[:institution_id]
+  end
 
   def edit
     @document_record = DocumentRecord.find(params[:id])
@@ -13,10 +19,12 @@ class DocumentRecordsController < ApplicationController
 
   def create
     @document_record = DocumentRecord.new(document_record_params.merge(user_id: current_user.id))
-
+    @institution = @document_record.institution
+    puts "---------------"
+    puts turbo_frame_request?
+    puts "---------------"
     if @document_record.save
       flash[:notice] = "Registro de Documento criado com sucesso!"
-      render :new, status: :ok
     else
       flash[:notice] = "Registro de Documento não pode ser criado!"
       render :new, status: :unprocessable_entity
