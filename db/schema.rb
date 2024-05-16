@@ -12,12 +12,14 @@
 
 ActiveRecord::Schema[7.1].define(version: 2024_01_28_204311) do
   create_table "document_records", force: :cascade do |t|
+    t.text "information"
+    t.text "pendency"
+    t.text "received_from"
+    t.boolean "state", default: true
+    t.date "reference_date", default: -> { "CURRENT_DATE" }
     t.integer "user_id", null: false
     t.integer "institution_id", null: false
-    t.boolean "state", default: true
-    t.text "information"
     t.integer "document_type_id", null: false
-    t.text "received_from"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["document_type_id"], name: "index_document_records_on_document_type_id"
