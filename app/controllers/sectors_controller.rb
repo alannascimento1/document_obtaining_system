@@ -2,6 +2,7 @@ class SectorsController < ActionController::Base
   layout 'base'
 
   def index
+    @sector = Sector.find_by(id: params['sector_id'])
   end
 
   def edit

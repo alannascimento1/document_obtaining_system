@@ -13,6 +13,7 @@ export default class extends Controller {
       backdropClasses: "bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40",
       onShow: () => {
         document.body.classList.add("overflow-y-hidden");
+        document.body.classList.remove("hidden");
       },
       onHide: () => {
         document.body.classList.remove("overflow-y-hidden");
@@ -32,6 +33,10 @@ export default class extends Controller {
   }
 
   hide() {
+    console.log("-------hide------")
+    console.log(this.modal)
+    console.log("-------hide------")
+
     this.modal.hide();
   }
 }
