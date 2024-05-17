@@ -27,7 +27,6 @@ class DocumentRecordsController < ApplicationController
 
   def update
     @document_record = DocumentRecord.find(params[:id])
-
     if @document_record.update(document_record_params)
       flash[:notice] = "Registro de Documento atualizado com sucesso!"
       render :edit, status: :ok
@@ -47,6 +46,8 @@ class DocumentRecordsController < ApplicationController
   private
 
   def document_record_params
-    params.require(:document_record).permit(:institution_id, :state, :information, :document_type_id, :received_from)
+    _params = params.require(:document_record).permit(:institution_id, :state, :information, :document_type_id, :received_from, :pendency, :reference_date)
+    _params[:reference_date] = (_params[:reference_date]+"-01").to_date if _params[:reference_date].present?
+    _params
   end
 end

@@ -3,7 +3,7 @@
     <%= render Alert::Component.new(title: flash.now[:notice]) %> 
   </div>
   <form class="p-4 md:p-5" action=<%= document_record_path %> method="put" data-turbo="true" data-turbo-frame="form_document_record_content_frame">
-    <% form_info = { institution: @institution, document_record: @document_record } %>
+    <% form_info = { institution: @document_record.institution, document_record: @document_record } %>
     <%= render 'document_records/form', form_info: form_info %>
   </form>
 <% end %>

@@ -16,27 +16,27 @@
 <div class="grid gap-4 mb-4 grid-cols-2">
   <div class="col-span-2">
     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Recebido de:</label>
-    <input type="text" name="document_record[received_from]" value="<%= form_info[:document_record]&.received_from %>" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="">
+    <input type="text" name="document_record[received_from]" value="<%= form_info[:document_record]&.received_from %>" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Não informado">
   </div>
 </div>
 <div class="grid gap-4 mb-4 grid-cols-2">
   <div class="col-span-2">
     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Informações Extras:</label>
-    <input type="text" name="document_record[information]" value="<%= form_info[:document_record]&.information %>" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="">
+    <input type="text" name="document_record[information]" value="<%= form_info[:document_record]&.information %>" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Sem informações extras">
   </div>
 </div>
 <div class="grid gap-4 mb-4 grid-cols-2">
   <div class="flex flex-col col-span-2">
-    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Existe pendência?</label>
+    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Pendência:</label>
     <div class="flex flex-row space-x-2">
-      <input type="checkbox" name="document_record[pendency]" id="is_pending" class="peer w-2 h-2 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="">
-      <input type="text" name="document_record[pendency]" value="<%= form_info[:document_record]&.pendency %>" id="pending_information" class="peer-checked:block hidden bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="">
+      <input type="text" name="document_record[pendency]" value="<%= form_info[:document_record]&.pendency %>" id="pending_information" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Sem pendência">
     </div>
   </div>
 </div>
 <div class="grid gap-4 mb-4 grid-cols-2">
   <div class="flex flex-col col-span-2">
-    <div class="flex flex-row space-x-2">
+    <div class="flex flex-col gap-2">
+      <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mês de Referência:</label>
       <input type="month" 
               name="document_record[reference_date]" 
               id="reference_date" 
