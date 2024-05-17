@@ -7,9 +7,6 @@ class DocumentRecordsController < ApplicationController
   end
 
   def new
-    puts "---------------"
-    puts params[:institution_id]
-    puts "---------------"
     @institution_id = params[:institution_id]
   end
 
@@ -20,9 +17,6 @@ class DocumentRecordsController < ApplicationController
   def create
     @document_record = DocumentRecord.new(document_record_params.merge(user_id: current_user.id))
     @institution = @document_record.institution
-    puts "---------------"
-    puts turbo_frame_request?
-    puts "---------------"
     if @document_record.save
       flash[:notice] = "Registro de Documento criado com sucesso!"
     else
