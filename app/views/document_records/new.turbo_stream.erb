@@ -1,3 +1,5 @@
 <%= turbo_stream.update "form_document_record_content_frame_#{@institution_id}" do %>
-  <%= render 'document_records/form', institution: @institution %>
+  <form class="p-4 md:p-5" action=<%= document_records_path %> method="post" data-turbo="true" data-turbo-frame="form_document_record_content_frame">
+    <%= render 'document_records/form', institution:  @institution %>
+  </form>
 <% end %>
