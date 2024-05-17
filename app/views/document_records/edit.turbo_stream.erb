@@ -3,52 +3,8 @@
     <%= render Alert::Component.new(title: flash.now[:notice]) %> 
   </div>
   <form class="p-4 md:p-5" action=<%= document_record_path %> method="put" data-turbo="true" data-turbo-frame="form_document_record_content_frame">
-    <div class="grid gap-4 mb-4 grid-cols-2">
-      <div class="col-span-2 mb-2">
-        <label for="document_type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tipo de Documento</label>
-        <select id="document_type" name="document_record[document_type_id]"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <% DocumentType.all.each do |document_type| %>
-            <option <%= "selected" if document_type.id == @document_record.document_type.id %> value="<%= document_type.id %>"> <%= document_type.name %></option>
-          <% end %>
-        </select>
-      </div>
-    </div>
-    <div class="grid gap-4 mb-4 grid-cols-2">
-      <div class="col-span-2 mb-2">
-        <label for="institutions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Estado:</label>
-        <select id="institutions" name="document_record[state]"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option <%= "selected" if @document_record.state.present? %> value="<%= true %>">Recebido</option>
-          <option <%= "selected" if @document_record.state.blank? %> value="<%= false %>">Não Recebido</option>
-        </select>
-      </div>
-    </div>
-    <div class="grid gap-4 mb-4 grid-cols-2">
-      <div class="col-span-2 mb-2">
-        <label for="institutions" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Escolha uma Instituição</label>
-        <select id="institutions" name="document_record[institution_id]"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <% Institution.all.each do |institution| %>
-            <option value="<%= institution.id %>" <%= "selected" if @document_record.institution.id == institution.id %> ><%= institution.name %></option>
-          <% end %>
-        </select>
-      </div>
-    </div>
-    <div class="grid gap-4 mb-4 grid-cols-2">
-      <div class="col-span-2">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Recebido de:</label>
-        <input type="text" name="document_record[received_from]" value="<%= @document_record.received_from %>" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nome do setor">
-      </div>
-    </div>
-    <div class="grid gap-4 mb-4 grid-cols-2">
-      <div class="col-span-2">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Informações Extras:</label>
-        <input type="text" name="document_record[information]" value="<%= @document_record.information %>" id="name" value="<%= @document_record.information %>" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Nome do setor" required="">
-      </div>
-    </div>
-    <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-      <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
-      </svg> Salvar
-    </button>
+    <% form_info = { institution: @institution, document_record: @document_record } %>
+    <%= render 'document_records/form', form_info: form_info %>
   </form>
 <% end %>
 

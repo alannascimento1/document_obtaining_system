@@ -103,7 +103,8 @@
 
                     <%= turbo_frame_tag "form_document_record_content_frame_#{institution.id}" do %>
                       <form class="p-4 md:p-5" action=<%= document_records_path %> method="post" data-turbo="true" data-turbo-frame="form_document_record_content_frame">
-                        <%= render 'document_records/form', institution: @institution %>
+                        <% form_info = { institution: institution } %>
+                        <%= render 'document_records/form', form_info: form_info %>
                       </form>
                     <% end %>
                   </div>
