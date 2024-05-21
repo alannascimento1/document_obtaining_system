@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :document_types
   resources :state_transition_documents
   resources :document_records
+  resources :institution_searchs, only: :index
 
   root 'pages#index'
   get 'pages/index'

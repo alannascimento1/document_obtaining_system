@@ -1,6 +1,8 @@
 <%= turbo_stream.update :form_edit_document_record_content_frame do %>
   <div data-controller="load-flowbite">
-    <%= render Alert::Component.new(title: flash.now[:notice]) %> 
+    <% if flash.now[:notice].present? %>
+      <%= render Alert::Component.new(title: flash.now[:notice]) %> 
+    <% end %>
   </div>
   <form class="p-4 md:p-5" action=<%= document_record_path %> method="put" data-turbo="true" data-turbo-frame="form_document_record_content_frame">
     <% form_info = { institution: @document_record.institution, document_record: @document_record } %>
