@@ -15,10 +15,10 @@ class InstitutionsController < ActionController::Base
     @institution = Institution.new(institution_params)
 
     if @institution.save
-      flash[:notice] = "Instituição criada com sucesso!"
+      flash[:notice] = "#{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} criada com sucesso!"
       render :new, status: :ok
     else
-      flash[:notice] = "Instituição não pode ser criada!"
+      flash[:notice] = "#{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} não pode ser criada!"
       render :new, status: :unprocessable_entity
     end
   end
@@ -27,10 +27,10 @@ class InstitutionsController < ActionController::Base
     @institution = Institution.find(params[:id])
 
     if @institution.update(institution_params)
-      flash[:notice] = "Instituição atualizada com sucesso!"
+      flash[:notice] = "#{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} atualizada com sucesso!"
       render :edit, status: :ok
     else
-      flash[:notice] = "Instituição não pode ser atualizada!"
+      flash[:notice] = "#{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} não pode ser atualizada!"
       render :edit, status: :unprocessable_entity
     end
   end
@@ -39,10 +39,10 @@ class InstitutionsController < ActionController::Base
     @institution = Institution.find(params[:id])
     @institution.destroy
 
-    flash[:notice] = "Instituição deletada com sucesso!"
+    flash[:notice] = "#{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} deletada com sucesso!"
     render :destroy, status: :ok
   rescue ActiveRecord::InvalidForeignKey => e
-    flash[:notice] = "Esta instituição não pode ser deletada porque está sendo referenciada por outros registros."
+    flash[:notice] = "Esta #{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} não pode ser deletada porque está sendo referenciada por outros registros."
     render :destroy, status: :unprocessable_entity
   end
 

@@ -2,6 +2,6 @@
 
 module CONSTANTS
   module DASHBOARD
-    INSTITUTION_TITLE = "Instituição"
+    INSTITUTION_TITLE = "Insituição"
   end
 end
