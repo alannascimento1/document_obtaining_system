@@ -12,9 +12,9 @@ class InstitutionsController < ActionController::Base
   end
 
   def create
-    @institution = Institution.new(institution_params)
+    result = Institution::Create.result(attributes: institution_params.to_h)
 
-    if @institution.save
+    if result.success?
       flash[:notice] = "#{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} criada com sucesso!"
       render :new, status: :ok
     else
@@ -48,6 +48,6 @@ class InstitutionsController < ActionController::Base
 
   private
   def institution_params
-    params.require(:institution).permit(:name, :sector_id)
+    params.require(:institution).permit(:name, :sector_id, required_document_types: [])
   end
 end
