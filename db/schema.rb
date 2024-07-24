@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_28_204311) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_08_215146) do
   create_table "document_records", force: :cascade do |t|
     t.text "information"
     t.text "pendency"
@@ -41,6 +41,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_28_204311) do
     t.index ["sector_id"], name: "index_institutions_on_sector_id"
   end
 
+  create_table "required_documents_institutions", force: :cascade do |t|
+    t.integer "institution_id", null: false
+    t.integer "document_type_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["document_type_id"], name: "index_required_documents_institutions_on_document_type_id"
+    t.index ["institution_id"], name: "index_required_documents_institutions_on_institution_id"
+  end
+
   create_table "sectors", force: :cascade do |t|
     t.text "name"
     t.datetime "created_at", null: false
@@ -63,4 +72,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_28_204311) do
   add_foreign_key "document_records", "institutions"
   add_foreign_key "document_records", "users"
   add_foreign_key "institutions", "sectors"
+  add_foreign_key "required_documents_institutions", "document_types"
+  add_foreign_key "required_documents_institutions", "institutions"
 end
