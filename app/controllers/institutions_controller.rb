@@ -25,8 +25,9 @@ class InstitutionsController < ActionController::Base
 
   def update
     @institution = Institution.find(params[:id])
+    result = Institutions::Update.result(institution: @institution, attributes: institution_params.to_h)
 
-    if @institution.update(institution_params)
+    if result.success?
       flash[:notice] = "#{CONSTANTS::DASHBOARD::INSTITUTION_TITLE} atualizada com sucesso!"
       render :edit, status: :ok
     else
