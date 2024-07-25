@@ -14,4 +14,9 @@ class Institution < ApplicationRecord
   def exists_required_document_type?(document_type)
     required_documents_institutions.where(document_type: document_type).exists?
   end
+
+  def documents_not_registered_to_month(date:)
+    required_documents_institutions.pluck(:document_type_id) - document_records.where(reference_date: date.beginning_of_month..date.end_of_month).pluck(:document_type_id)
+    DocumentType.where(id: document_type_ids)
+  end
 end
