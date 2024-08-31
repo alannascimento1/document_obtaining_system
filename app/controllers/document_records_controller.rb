@@ -3,11 +3,18 @@ class DocumentRecordsController < ApplicationController
 
   def index
     @institution = Institution.find_by(id: params[:institution_id])
-    @document_records = @institution.document_records
+    @date = Date.parse( (params[:reference_month] || Time.zone.now.strftime("%Y-%m")) + "-01")
+    @status = params[:status] || DocumentRecord::DELIVERED
+    @document_types = @institution.fetch_by_status_and_date(
+      status: @status,
+      date: @date
+    )
+    @document_with_pendencies = @institution.documents_with_pendency_to_month(date: @date)
   end
 
   def new
     @institution_id = params[:institution_id]
+    @institution = Institution.find_by(id: @institution_id)
   end
 
   def edit
@@ -21,7 +28,6 @@ class DocumentRecordsController < ApplicationController
       flash[:notice] = "Registro de Documento criado com sucesso!"
     else
       flash[:notice] = "Registro de Documento não pode ser criado!"
-      render :new, status: :unprocessable_entity
     end
   end
 
