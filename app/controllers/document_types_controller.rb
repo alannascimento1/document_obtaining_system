@@ -42,7 +42,7 @@ class DocumentTypesController < ActionController::Base
     flash[:notice] = "Tipo de documento deletado com sucesso!"
     render :destroy, status: :ok
   rescue ActiveRecord::InvalidForeignKey => e
-    flash[:notice] = "Este tipo de documento não pode ser deletado porque está sendo referenciada por outros registros."
+    flash[:notice] = "Este tipo de documento não pode ser deletado porque está sendo referenciada por outro registro."
     render :destroy, status: :unprocessable_entity
   end
 
