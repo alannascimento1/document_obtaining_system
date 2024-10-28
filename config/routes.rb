@@ -13,6 +13,5 @@ Rails.application.routes.draw do
   resource :deliver_document, only: [:create]
   resources :institution_searchs, only: :index
 
-  root 'pages#index'
-  get 'pages/index'
+  root to: 'institutions#index'
 end

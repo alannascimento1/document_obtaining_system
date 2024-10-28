@@ -11,7 +11,7 @@ module Institutions
 
       institution.required_documents_institutions.destroy_all
 
-      required_document_types_requireds.each do |document_type|
+      required_document_types_requireds&.each do |document_type|
         document_type = DocumentType.find_by(id: document_type)
         required_document_type = RequiredDocumentsInstitution.create(institution:, document_type:)
 

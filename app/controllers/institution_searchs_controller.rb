@@ -9,6 +9,6 @@ class InstitutionSearchsController < ApplicationController
 
     @document_records = DocumentRecord.all
 
-    redirect_to(pages_index_path(page: params[:page], search: params[:search]))
+    redirect_to(institutions_path(page: params[:page], search: params[:search]))
   end
 end

@@ -8,7 +8,7 @@ module Institutions
       institution = Institution.create(institution_params)
       fail!(error: :create_institution) unless institution.valid?
 
-      required_document_types_requireds.each do |document_type|
+      required_document_types_requireds&.each do |document_type|
         document_type = DocumentType.find_by(id: document_type)
         required_document_type = RequiredDocumentsInstitution.create(institution:, document_type:)
 
