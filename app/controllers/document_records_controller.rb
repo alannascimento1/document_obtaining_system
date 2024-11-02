@@ -3,7 +3,7 @@ class DocumentRecordsController < ApplicationController
 
   def index
     @institution = Institution.find_by(id: params[:institution_id])
-    @date = Date.parse( (params[:reference_month] || Time.zone.now.strftime("%Y-%m")) + "-01")
+    @date = Date.parse( (params[:reference_month] || Time.zone.now.prev_month.strftime("%Y-%m")) + "-01")
     @status = params[:status] || DocumentRecord::DELIVERED
     @document_types = @institution.fetch_by_status_and_date(
       status: @status,
