@@ -43,10 +43,12 @@ class DocumentRecordsController < ApplicationController
   end
 
   def destroy
-    @document_record = DocumentRecord.find(params[:id])
+    @document_record = DocumentRecord.find_by(id: params[:id])
     @document_record.destroy
 
-    render :destroy, status: :ok
+    redirect_to document_records_path(institution_id: @document_record.institution.id,
+                                      status: DocumentRecord::DELIVERED,
+                                      reference_date: @document_record.reference_date.strftime("%Y-%m"))
   end
 
   private

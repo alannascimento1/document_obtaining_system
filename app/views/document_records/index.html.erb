@@ -94,11 +94,22 @@
       <%= render Table::Component.new() do |c| %>
         <% c.with_header do %>
           <th scope="col" class="px-6 py-3"> Documento </th>
+          <% if @status == DocumentRecord::DELIVERED %>
+            <th scope="col" class="px-6 py-3"> Excluir </th>
+          <% end %>
         <% end %>
         <% c.with_set_rows do %>
           <% @document_types&.each do |document_type|%>
             <tr class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"> <%= document_type.name %> </th>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+              <% if @status == DocumentRecord::DELIVERED %>
+                <%= form_with url: document_record_path(@institution.document_records.where(document_type: document_type).first), method: :delete do |form| %>
+                  <%= form.hidden_field :id, value: document_type.id %>
+                  <%= form.submit "Exluir", class: "rounded-lg cursor-pointer p-2 bg-red-400" %>
+                <% end %>
+              <% end %>
+              </th>
             </tr>
           <% end %>
         <% end %>
@@ -120,8 +131,9 @@
               <td class="px-6 py-4 whitespace-nowrap dark:text-white">
                 <%= form_with url: deliver_document_path, method: :post do |form| %>
                   <%= form.hidden_field :document_record_id, value: document_with_pendency.id %>
-                  <%= form.submit "Marcar como Entregue", class: "rounded-lg p-2 bg-yellow-200" %>
+                  <%= form.submit "Marcar como Entregue", class: "cursor-pointer rounded-lg p-2 bg-yellow-200" %>
                 <% end %>
+              </td>
             </tr>
           <% end %>
         <% end %>
