@@ -13,5 +13,6 @@ Rails.application.routes.draw do
   resource :deliver_document, only: [:create]
   resources :institution_searchs, only: :index
 
+  resources :export_data, only: [:index]
   root to: 'institutions#index'
 end

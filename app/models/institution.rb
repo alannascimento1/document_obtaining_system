@@ -1,5 +1,6 @@
 class Institution < ApplicationRecord
   self.per_page = 5
+  require 'csv'
 
   belongs_to :sector
   has_many :document_records
@@ -34,6 +35,22 @@ class Institution < ApplicationRecord
       documents_not_registered_to_month(date:)
     elsif status == DocumentRecord::DELIVERED
       documents_registered_to_month(date:)
+    end
+  end
+
+  def self.to_csv
+    ::CSV.generate(headers: true) do |csv|
+      csv << ["Instituição", "Documento", "Mês de Referência"]
+
+      all.includes(:document_records).each do |institution|
+        institution.document_records.each do |document|
+          csv << [
+            institution.name,
+            DocumentType.find(document.document_type_id).name,
+            document.reference_date.strftime("%Y-%m")
+          ]
+        end
+      end
     end
   end
 end
