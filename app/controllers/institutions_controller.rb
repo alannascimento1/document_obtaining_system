@@ -1,4 +1,4 @@
-class InstitutionsController < ActionController::Base
+class InstitutionsController < ApplicationController
   layout 'base'
 
   def index

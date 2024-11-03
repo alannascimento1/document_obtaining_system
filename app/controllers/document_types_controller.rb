@@ -1,4 +1,4 @@
-class DocumentTypesController < ActionController::Base
+class DocumentTypesController < ApplicationController
   layout 'base'
 
   def index

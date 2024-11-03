@@ -1,4 +1,4 @@
-class SectorsController < ActionController::Base
+class SectorsController < ApplicationController
   layout 'base'
 
   def index
