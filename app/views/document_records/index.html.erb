@@ -4,73 +4,73 @@
   <div class="flex flex-row">
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 1, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 1, 1)).exists? %>
-        <div>Janeiro</div>
+        <%= link_to "Janeiro", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 1, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 2, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 2, 1)).exists? %>
-        <div>Fevereiro</div>
+        <%= link_to "Fevereiro", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 2, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 3, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 3, 1)).exists? %>
-        <div>Março</div>
+        <%= link_to "Março", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 3, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 4, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 4, 1)).exists? %>
-        <div>Abril</div>
+        <%= link_to "Abril", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 4, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 5, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 5, 1)).exists? %>
-        <div>Maio</div>
+        <%= link_to "Maio", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 5, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 6, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 6, 1)).exists? %>
-        <div>Junho</div>
+        <%= link_to "Junho", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 6, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 7, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 7, 1)).exists? %>
-        <div>Julho</div>
+        <%= link_to "Julho", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 7, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 8, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 8, 1)).exists? %>
-        <div>Agosto</div>
+        <%= link_to "Agosto", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 8, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 9, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 9, 1)).exists? %>
-        <div>Setembro</div>
+        <%= link_to "Setembro", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 9, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 10, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 10, 1)).exists? %>
-        <div>Outubro</div>
+        <%= link_to "Outubro", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 10, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 11, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 11, 1)).exists? %>
-        <div>Novembro</div>
+        <%= link_to "Novembro", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 11, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 12, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 12, 1)).exists? %>
-        <div>Dezembro</div>
+        <%= link_to "Dezembro", document_records_path(institution_id: @institution.id, status: DocumentRecord::PENDING, reference_month: Date.new(Date.today.year, 12, 1).strftime("%Y-%m")), class: "hover:underline hover:text-blue-400" %>
         <span class="flex w-3 h-3 me-3 bg-yellow-300 rounded-full"></span>
       <% end %>
     </div>
