@@ -1,6 +1,6 @@
 <section>
   <h1 class="font-bold mb-2"><%= @institution.name %></h1>
-  <h1 class="font-bold">Meses com pendências</h1>
+  <h1 class="font-bold">Meses com pendências do ano atual</h1>
   <div class="flex flex-row">
     <div class="flex flex-row">
       <% if Date.new(Date.today.year, 1, 1).past? && @institution.fetch_by_status_and_date(status: DocumentRecord::PENDING, date: Date.new(Date.today.year, 1, 1)).exists? %>
