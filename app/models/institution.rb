@@ -8,10 +8,6 @@ class Institution < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
-  def required?(document_type)
-    document_records.where(document_type:).exists?
-  end
-
   def exists_required_document_type?(document_type)
     required_documents_institutions.where(document_type: document_type).exists?
   end
