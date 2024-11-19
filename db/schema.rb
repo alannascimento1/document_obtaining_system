@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_08_215146) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_19_150528) do
   create_table "document_records", force: :cascade do |t|
     t.text "information"
     t.text "pendency"
@@ -31,6 +31,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_215146) do
     t.text "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "allows_multiple", default: false, null: false
   end
 
   create_table "institutions", force: :cascade do |t|
