@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_08_215146) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_19_144905) do
   create_table "document_records", force: :cascade do |t|
     t.text "information"
     t.text "pendency"
@@ -22,6 +22,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_08_215146) do
     t.integer "document_type_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "observation"
     t.index ["document_type_id"], name: "index_document_records_on_document_type_id"
     t.index ["institution_id"], name: "index_document_records_on_institution_id"
     t.index ["user_id"], name: "index_document_records_on_user_id"
