@@ -26,12 +26,12 @@
           </svg>
         </button>
         <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
-          <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent  md: ">
+          <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent">
             <li>
-              <a href="<%= institutions_path %>" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:  md:" aria-current="page"><%= CONSTANTS::DASHBOARD::INSTITUTION_TITLE %></a>
+              <a href="<%= institutions_path %>" class="block py-2 px-3 md:p-0 bg-blue-700 rounded bg-transparent text-blue-700" aria-current="page"><%= CONSTANTS::DASHBOARD::INSTITUTION_TITLE %></a>
             </li>
             <li>
-              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto  md:    md:">Recursos<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+              <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto">Recursos<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
               </svg></button>
               <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44  ">
@@ -51,7 +51,7 @@
             <li>
               <a href="https://docs.google.com/document/d/15z5k6J9VCf7fut3dRmMoUh-v3zc1lsLHAvnsWHR41ks/edit?usp=sharing" 
                 target="_blank"
-                class="block py-2 px-3 md:p-0 bg-blue-700 rounded md:bg-transparent text-gray-900 md: " aria-current="page">Como usar?</a>
+                class="block py-2 px-3 md:p-0 rounded text-gray-900" aria-current="page">Como usar?</a>
             </li>
             <li>
               <%= button_to(destroy_user_session_path, data: {turbo: false}, method: :delete) do %>

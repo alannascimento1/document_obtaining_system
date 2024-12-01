@@ -22,8 +22,8 @@
 <section class="flex flex-col space-y-4 mt-10">
   <%= turbo_frame_tag :alert_index_frame do %>
   <% end %>
-  <div class="flex flex-col sm:flex-row space-y-1 sm:space-y-0 sm:justify-between">
-    <form class="flex flex-row w-4/6">
+  <div class="flex flex-col sm:flex-row space-y-1 space-x-2 sm:space-y-0 sm:justify-between">
+    <form class="flex flex-row w-full sm:w-4/6">
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
       <div class="relative w-full">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -39,8 +39,8 @@
         </div>
       </div>
     </form>
-    <div data-controller="open-modal-by-click" class="flex w-2/6 justify-end">
-      <button data-action="click->open-modal-by-click#show" type="button" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-700 border border-transparent rounded-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300   ">
+    <div data-controller="open-modal-by-click" class="flex w-full sm:w-2/6 justify-end">
+      <button data-action="click->open-modal-by-click#show" type="button" class="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-700 border border-transparent rounded-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300   ">
         <svg class="w-4 h-4 mr-2 -ml-1 text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" clip-rule="evenodd" d="m10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z" />
           <path d="m10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z" />
