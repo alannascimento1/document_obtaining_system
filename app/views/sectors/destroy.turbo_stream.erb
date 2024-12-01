@@ -1,4 +1,7 @@
 <%= turbo_stream.update :sectors_list_frame do %>
+  <div data-controller="load-flowbite">
+    <%= render Alert::Component.new(title: flash.now[:notice]) if flash.now[:notice] %> 
+  </div>
   <%= render Table::Component.new() do |c| %>
     <% c.with_set_rows do %>
       <% Sector.all.each do |sector|%>
