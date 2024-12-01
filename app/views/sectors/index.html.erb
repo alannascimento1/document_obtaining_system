@@ -13,23 +13,25 @@
         <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
           <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
         </svg>
-        <a href="<%= sectors_path %>" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2  ">Setores</a>
+        <a href="<%= sectors_path %>" class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2  ">Tipo de Documentos</a>
       </div>
     </li>
   </ol>
 </nav>
 
 <section class="flex flex-col space-y-4 mt-10">
-  <div class="flex flex-col sm:flex-row sm:w-full space-y-1 sm:space-y-0 sm:justify-between">
-    <form class="flex flex-row sm:w-3/4 w-full">
+  <%= turbo_frame_tag :alert_index_frame do %>
+  <% end %>
+  <div class="flex flex-col sm:flex-row space-y-1 sm:space-x-2 sm:space-y-0 sm:justify-between">
+    <form class="flex flex-row w-full sm:w-4/6">
       <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only ">Search</label>
-      <div class="relative w-full mr-2">
+      <div class="relative w-full">
         <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
           <svg class="w-4 h-4 text-gray-500 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
           </svg>
         </div>
-        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500      " placeholder="Buscar por nome do setor" required>
+        <input type="search" id="default-search" class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500      " placeholder="Buscar por nome do tipo de documento" required>
         <div class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2   ">
           <svg class="w-4 h-4 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
@@ -37,19 +39,19 @@
         </div>
       </div>
     </form>
-    <div data-controller="open-modal-by-click" class="sm:w-1/4 w-full flex justify-end">
+    <div data-controller="open-modal-by-click" class="flex w-full sm:w-2/6 justify-end">
       <button data-action="click->open-modal-by-click#show" type="button" class="w-full inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-blue-700 border border-transparent rounded-md hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300   ">
         <svg class="w-4 h-4 mr-2 -ml-1 text-white" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20">
           <path fill-rule="evenodd" clip-rule="evenodd" d="m10 3a7 7 0 1 0 0 14 7 7 0 0 0 0-14Zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10Z" />
           <path d="m10 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18Zm0 16a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z" />
         </svg>
-        <span>Cadastrar Setor</span>
+        <span>Cadastrar Tipo</span>
       </button>
       <div id="create-sector-modal" data-open-modal-by-click-target="modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
           <div class="relative bg-white rounded-lg shadow ">
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
-              <h3 class="text-lg font-semibold text-gray-900 "> Criar Setor </h3>
+              <h3 class="text-lg font-semibold text-gray-900 "> Criar Tipo de Documento </h3>
               <button type="button" data-action="click->open-modal-by-click#hide" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center  ">
                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                   <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
@@ -57,21 +59,13 @@
                 <span class="sr-only">Close modal</span>
               </button>
             </div>
-            <div data-controller="load-flowbite">
-              <%= render Alert::Component.new(title: flash.now[:notice]) if flash.now[:notice] %> 
-            </div>
+
             <form class="p-4 md:p-5" action=<%= sectors_path %> method="post" data-turbo="true" data-turbo-frame="form_sector_content_frame">
               <%= turbo_frame_tag :form_sector_content_frame do %>
                 <div class="grid gap-4 mb-4 grid-cols-2">
                   <div class="col-span-2">
                     <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nome</label>
-                    <input type="text" 
-                      name="sector[name]"
-                      id="name"
-                      value="<%= @sector&.name %>"
-                      class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5      "
-                      placeholder="Nome do setor"
-                      required="">
+                    <input type="text" name="sector[name]" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5      " placeholder="Nome do tipo de documento" required="">
                   </div>
                 </div>
                 <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center   ">
@@ -86,51 +80,20 @@
       </div>
     </div>
   </div>
-  <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+  <div class="relative overflow-x-auto shadow-md sm:rounded-lg" data-controller="open-modal-by-click">
     <%= turbo_frame_tag :sectors_list_frame do %>
       <%= render Table::Component.new() do |c| %>
         <% c.with_set_rows do %>
           <% Sector.all.each do |sector|%>
             <tr class="odd:bg-white odd: even:bg-gray-50 even: border-b ">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "> <%= sector.name %> </th>
-              <td class="px-6 py-4" data-controller="open-modal-by-click">
+              <td class="px-6 py-4">
                 <form action="<%= edit_sector_path(sector.id) %>" method="post" data-turbo="true" data-turbo-frame="form_edit_sector_content_frame" data-remote="true">
                   <div data-action="click->open-modal-by-click#show">
                     <input type="hidden" name="_method" value="get">
                     <button type="submit" class="text-blue-500 hover:text-blue-700">Editar</button>
                   </div>
                 </form>
-                <div id="edit-sector-modal" data-open-modal-by-click-target="modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                  <% if @sector.present? %>
-                    <div class="relative p-4 w-full max-w-md max-h-full">
-                      <div class="relative bg-white rounded-lg shadow ">
-                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
-                          <h3 class="text-lg font-semibold text-gray-900 "> Editar Setor </h3>
-                          <button type="button" data-action="click->open-modal-by-click#hide" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center  ">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                          </button>
-                        </div>
-
-                        <%= turbo_frame_tag :form_edit_sector_content_frame do %>
-                          <form class="p-4 md:p-5" action=<%= sector_path(@sector.id) %> method="put" data-turbo="true" data-turbo-frame="form_edit_sector_content_frame">
-                            <div class="grid gap-4 mb-4 grid-cols-2">
-                              <div class="col-span-2">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nome</label>
-                                <input type="text" name="sector[name]" id="name" value="<%= @sector.name %>"class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5      " placeholder="Nome do setor" required="">
-                              </div>
-                            </div>
-                            <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center   ">
-                              Salvar
-                            </button>
-                          </form>
-                        <% end %>
-                      </div>
-                    </div>
-                  <% end %>
-                </div>
               </td>
               <td class="px-6 py-4">
                 <form action="<%= sector_path(sector.id) %>" method="post" data-turbo="true" data-remote="true">
@@ -143,6 +106,25 @@
         <% end %>
       <% end %>
     <% end %>
+
+    <div id="edit-sector-modal" data-open-modal-by-click-target="modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+      <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative bg-white rounded-lg shadow ">
+          <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t ">
+            <h3 class="text-lg font-semibold text-gray-900 "> Editar Tipo de Documento </h3>
+            <button type="button" data-action="click->open-modal-by-click#hide" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center  ">
+              <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+              </svg>
+              <span class="sr-only">Close modal</span>
+            </button>
+          </div>
+
+          <%= turbo_frame_tag :form_edit_sector_content_frame do %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
